@@ -12396,4 +12396,32 @@ footer .copyright-social ul li:last-child {
   color: #000;
 }
 
+
+.removeBottomMargin {
+  margin-bottom: 0px !important;
+}
+
+.removeTopMargin {
+  margin-top: 0px !important;
+}
+
+.youtubebutton a {
+  color: white !!important;
+  border: 1px solid #bebebe;
+  background-color: red;
+}
+
+.v-light .youtubebutton a {
+  color: white !!important;
+  border: 1px solid #bebebe;
+  background-color: red;
+}
+
+.youtubebutton a::before {
+  background-color: white !important;
+  color: red !important;
+}
+
+
+
 /*# sourceMappingURL=style.css.map */
