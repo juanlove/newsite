@@ -64,7 +64,7 @@
         var preloader_before = preloader.find('.preloader-before');
 
 
-        var timer = dsnGrid.pageLoad(0, 100, 300, function (val) {
+        var timer = maria.pageLoad(0, 100, 300, function (val) {
             progress_number.text(val);
             preloader_progress.css('width', val + '%')
         });
@@ -236,7 +236,7 @@
 
 
                 if (heroImg.hasClass('parallax-move-element'))
-                    dsnGrid.parallaxMoveElemnt({
+                    maria.parallaxMoveElemnt({
                         target: $(eHeaderProject),
                         element: heroImg.find('.cover-bg')
                     }, 5, 1);
@@ -397,22 +397,22 @@
                     _that.attr('data-dsn-grid', 'moveUp');
                     let img = _that.find('img:not(.hidden) , video');
 
-                    let triggerHook = dsnGrid.getUndefinedVal(_that.data('dsn-triggerhook'), 1),
-                        duration = dsnGrid.getUndefinedVal(_that.data('dsn-duration'), (triggerHook !== 1) ? '100%' : '200%');
+                    let triggerHook = maria.getUndefinedVal(_that.data('dsn-triggerhook'), 1),
+                        duration = maria.getUndefinedVal(_that.data('dsn-duration'), (triggerHook !== 1) ? '100%' : '200%');
 
 
                     if (img.length > 0) {
                         var parallax;
                         if (img.hasClass('has-top-bottom')) {
-                            let pers = dsnGrid.getUndefinedVal(img.data('dsn-move'), '15%');
+                            let pers = maria.getUndefinedVal(img.data('dsn-move'), '15%');
                             parallax = TweenMax.to(img, 0.8, {
                                 force3D: true,
                                 y: pers,
                                 ease: Power0.easeNone
                             });
                         } else {
-                            let y = dsnGrid.getUndefinedVal(img.data('dsn-y'), '10%');
-                            let scale = dsnGrid.getUndefinedVal(img.data('dsn-scale'), 1.1);
+                            let y = maria.getUndefinedVal(img.data('dsn-y'), '10%');
+                            let scale = maria.getUndefinedVal(img.data('dsn-scale'), 1.1);
 
                             if (triggerHook !== 1) {
                                 img.css('top', 0);
@@ -451,11 +451,11 @@
                     let _that = $(this);
                     _that.removeAttr('data-dsn-grid');
                     _that.addClass('dsn-move-section');
-                    let move = dsnGrid.getUndefinedVal(_that.data('dsn-move'), -100);
-                    let triggerHook = dsnGrid.getUndefinedVal(_that.data('dsn-triggerhook'), 1);
-                    let opacity = dsnGrid.getUndefinedVal(_that.data('dsn-opacity'), _that.css('opacity'));
+                    let move = maria.getUndefinedVal(_that.data('dsn-move'), -100);
+                    let triggerHook = maria.getUndefinedVal(_that.data('dsn-triggerhook'), 1);
+                    let opacity = maria.getUndefinedVal(_that.data('dsn-opacity'), _that.css('opacity'));
 
-                    let duration = dsnGrid.getUndefinedVal(_that.data('dsn-duration'), '150%');
+                    let duration = maria.getUndefinedVal(_that.data('dsn-duration'), '150%');
                     let resp = _that.data('dsn-responsive');
 
                     if (resp === 'tablet' && wind.width() < 992) return;
@@ -486,15 +486,15 @@
                 }
                 parallax.each(function () {
                     var _that = $(this),
-                        dsn_grid = dsnGrid.removeAttr(_that, 'data-dsn'),
-                        speed = dsnGrid.removeAttr(_that, 'data-dsn-speed'),
-                        move = dsnGrid.removeAttr(_that, 'data-dsn-move'),
+                        dsn_grid = maria.removeAttr(_that, 'data-dsn'),
+                        speed = maria.removeAttr(_that, 'data-dsn-speed'),
+                        move = maria.removeAttr(_that, 'data-dsn-move'),
                         scale = false;
 
                     if (_that.hasClass('image-zoom')) scale = true;
 
 
-                    dsnGrid.parallaxMoveElemnt(_that, move, speed, undefined, scale);
+                    maria.parallaxMoveElemnt(_that, move, speed, undefined, scale);
 
                 });
             },
@@ -504,7 +504,7 @@
 
                 $('[data-dsn="color"]').each(function () {
 
-                    let duration = dsnGrid.getUndefinedVal($(this).data('dsn-duration'), $(this).outerHeight() + 70);
+                    let duration = maria.getUndefinedVal($(this).data('dsn-duration'), $(this).outerHeight() + 70);
 
                     var parallaxIt = new ScrollMagic.Scene({
                             triggerElement: this,
@@ -538,7 +538,7 @@
                     let _that = $(this);
                     let triggerHook = 1;
                     if (_that.data('dsn-animate') === 'text') {
-                        dsnGrid.convertTextWord(_that, _that);
+                        maria.convertTextWord(_that, _that);
                         _that.attr('data-dsn-animate', 'animate');
                     } else
                         triggerHook = 0.8;
@@ -673,7 +673,7 @@
                 body.removeClass(locked_scroll);
                 this.start();
                 animate.allInt();
-                dsnGrid.progressCircle(effectScroll);
+                maria.progressCircle(effectScroll);
 
             },
             getScrollbar: function ($id) {
@@ -692,7 +692,7 @@
                 }
             },
             start: function () {
-                dsnGrid.scrollTop(0, 1);
+                maria.scrollTop(0, 1);
                 $('.scroll-to').on('click', function (e) {
                     e.preventDefault();
                     let sc = wind;
@@ -772,7 +772,7 @@
                     if ($index === 0) slide_content.addClass('dsn-active dsn-active-cat');
                     dsn_slider_content.append(slide_content);
                     let title = slide_content.find('.title-text-header-inner a');
-                    dsnGrid.convertTextLine(title, title);
+                    maria.convertTextLine(title, title);
                 });
             },
             progress: function (swiper) {
@@ -827,7 +827,7 @@
                     let tl = new TimelineLite();
 
                     tl.staggerFromTo(
-                        dsnGrid.randomObjectArray(content_letterOld, 0.3),
+                        maria.randomObjectArray(content_letterOld, 0.3),
                         0.3,
                         $this.showText().title,
                         $this.hideText($isRight).title,
@@ -844,7 +844,7 @@
 
 
                     tl.staggerFromTo(
-                        dsnGrid.randomObjectArray(content_letterNew, speed),
+                        maria.randomObjectArray(content_letterNew, speed),
                         speed,
                         $this.hideText($isRight).title,
                         $this.showText().title,
@@ -924,7 +924,7 @@
                         type: 'custom',
                         clickable: true,
                         renderCustom: function (swiper, current, total) {
-                            return dsnGrid.numberText(current);
+                            return maria.numberText(current);
                         }
                     },
                     on: {
@@ -1331,7 +1331,7 @@
                     transition: '',
                     objectFit: 'cover'
                 });
-                $section.css(dsnGrid.getBoundingClientRect($target[0]));
+                $section.css(maria.getBoundingClientRect($target[0]));
                 container.append($section);
                 return $section;
             },
@@ -1370,7 +1370,7 @@
                     ease: Expo.easeIn,
                     onComplete: function () {
                         _that.loader(url, function () {
-                            dsnGrid.scrollTop(0, 1);
+                            maria.scrollTop(0, 1);
                             effectScroller().unlocked();
                         });
                     }
@@ -1577,9 +1577,9 @@
         var text_close = text_menu.find('.text-close');
 
 
-        dsnGrid.convertTextWord(text_button, text_button, true);
-        dsnGrid.convertTextWord(text_open, text_open, true);
-        dsnGrid.convertTextWord(text_close, text_close, true);
+        maria.convertTextWord(text_button, text_button, true);
+        maria.convertTextWord(text_open, text_open, true);
+        maria.convertTextWord(text_close, text_close, true);
 
 
     }
@@ -1595,7 +1595,7 @@
         if ($('body').hasClass('dsn-large-mobile'))
             return;
 
-        dsnGrid.mouseMove($elemnet, {
+        maria.mouseMove($elemnet, {
             onComplete: function (event, element) {
                 if (!element.hasClass('effect-cursor')) {
                     element.addClass('effect-cursor');
@@ -1612,8 +1612,8 @@
         cursorEffect();
 
         function cursorEffect() {
-            dsnGrid.elementHover($elemnet, 'a , .to-prev , .to-next , .fas.fa-angle-right , .fas.fa-angle-left , .hero__down , .link-click , .filter-btn , .icon__fixed , .t-link , .button-next , .toggle , input', 'custom-cursor-link');
-            dsnGrid.elementHover($elemnet, '.dsn-video , .projs-item-img-container , .close-filters', 'hidden');
+            maria.elementHover($elemnet, 'a , .to-prev , .to-next , .fas.fa-angle-right , .fas.fa-angle-left , .hero__down , .link-click , .filter-btn , .icon__fixed , .t-link , .button-next , .toggle , input', 'custom-cursor-link');
+            maria.elementHover($elemnet, '.dsn-video , .projs-item-img-container , .close-filters', 'hidden');
         }
 
 
@@ -1749,7 +1749,7 @@ function SliderProject() {
 function data_overlay() {
     $('[data-overlay-color]').each(function ($index) {
         var _that = $(this);
-        var _color = dsnGrid.removeAttr(_that, 'data-overlay-color');
+        var _color = maria.removeAttr(_that, 'data-overlay-color');
         _that.addClass('dsn-overlay-' + $index);
         $('body').append('<style>.dsn-overlay-' + $index + '[data-overlay]:before{background: ' + _color + ';}</style>');
     });
@@ -1795,8 +1795,8 @@ function slick_client(wind) {
         });
 
         if (wind.width() > 991) {
-            dsnGrid.parallaxMoveElemnt(client_curs.find('.fas.fa-angle-right'), 25);
-            dsnGrid.parallaxMoveElemnt(client_curs.find('.fas.fa-angle-left'), 25);
+            maria.parallaxMoveElemnt(client_curs.find('.fas.fa-angle-right'), 25);
+            maria.parallaxMoveElemnt(client_curs.find('.fas.fa-angle-left'), 25);
         }
 
 
