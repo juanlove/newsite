@@ -74,7 +74,9 @@
 
             clearInterval(timer);
 
-            TweenMax.fromTo(preloader_progress, .5, {width: '95%'}, {
+            TweenMax.fromTo(preloader_progress, .5, {
+                width: '95%'
+            }, {
                 width: '100%',
                 onUpdate: function () {
                     var f = preloader_progress.width() / preloader_progress.parent().width() * 100;
@@ -82,14 +84,29 @@
 
                 },
                 onComplete: function () {
-                    TweenMax.to(preloader_bar, .5, {left: '100%'});
-                    TweenMax.to(progress_title, 1, {autoAlpha: 0, y: -100});
-                    TweenMax.to(progress_loading, 1, {autoAlpha: 0, y: 100});
-                    TweenMax.to(progress_number, 1, {autoAlpha: 0});
+                    TweenMax.to(preloader_bar, .5, {
+                        left: '100%'
+                    });
+                    TweenMax.to(progress_title, 1, {
+                        autoAlpha: 0,
+                        y: -100
+                    });
+                    TweenMax.to(progress_loading, 1, {
+                        autoAlpha: 0,
+                        y: 100
+                    });
+                    TweenMax.to(progress_number, 1, {
+                        autoAlpha: 0
+                    });
 
-                    TweenMax.to(preloader_before, 1, {y: '-100%', delay: .7});
+                    TweenMax.to(preloader_before, 1, {
+                        y: '-100%',
+                        delay: .7
+                    });
                     TweenMax.to(preloader_after, 1, {
-                        y: '100%', delay: .7, onComplete: function () {
+                        y: '100%',
+                        delay: .7,
+                        onComplete: function () {
                             preloader.addClass('hidden');
                         }
                     });
@@ -230,9 +247,11 @@
                 //--> Hero Image Project
                 if (heroImg.length > 0) {
                     let s = heroImg.hasClass('has-top-bottom') ? 1 : 1.08;
-                    parallax.to(heroImg, 1,
-                        {force3D: true, y: '30%', scale: s,}
-                        , 0);
+                    parallax.to(heroImg, 1, {
+                        force3D: true,
+                        y: '30%',
+                        scale: s,
+                    }, 0);
 
                 }
 
@@ -278,10 +297,10 @@
 
                 if (parallax._totalDuration <= 0) return false;
                 var parallaxProject = new ScrollMagic.Scene({
-                    triggerElement: eHeaderProject,
-                    triggerHook: 0,
-                    duration: '100%'
-                })
+                        triggerElement: eHeaderProject,
+                        triggerHook: 0,
+                        duration: '100%'
+                    })
                     .setTween(parallax)
                     .addTo(controller);
 
@@ -333,18 +352,16 @@
                     if (footerImg.length <= 0) return false;
 
                     return new ScrollMagic.Scene({
-                        triggerElement: eNextProject,
-                        triggerHook: 1,
-                        duration: '100%'
-                    })
-                        .setTween(TweenMax.to(footerImg, 1,
-                            {
-                                force3D: true,
-                                y: '30%',
-                                scale: 1,
-                                // width : '80%'
-                            }
-                            , 0))
+                            triggerElement: eNextProject,
+                            triggerHook: 1,
+                            duration: '100%'
+                        })
+                        .setTween(TweenMax.to(footerImg, 1, {
+                            force3D: true,
+                            y: '30%',
+                            scale: 1,
+                            // width : '80%'
+                        }, 0))
                         .addTo(controller);
 
 
@@ -354,18 +371,16 @@
                     if (footerTitle.length <= 0) return false;
 
                     return new ScrollMagic.Scene({
-                        triggerElement: eNextProject,
-                        triggerHook: .5,
-                        duration: '55%'
-                    })
-                        .setTween(TweenMax.to(footerTitle, 1,
-                            {
-                                force3D: true,
-                                top: '0%',
-                                opacity: 1,
-                                ease: Power0.easeNone
-                            }
-                            , 0))
+                            triggerElement: eNextProject,
+                            triggerHook: .5,
+                            duration: '55%'
+                        })
+                        .setTween(TweenMax.to(footerTitle, 1, {
+                            force3D: true,
+                            top: '0%',
+                            opacity: 1,
+                            ease: Power0.easeNone
+                        }, 0))
                         .addTo(controller);
 
 
@@ -390,14 +405,22 @@
                         var parallax;
                         if (img.hasClass('has-top-bottom')) {
                             let pers = dsnGrid.getUndefinedVal(img.data('dsn-move'), '15%');
-                            parallax = TweenMax.to(img, 0.8, {force3D: true, y: pers, ease: Power0.easeNone});
+                            parallax = TweenMax.to(img, 0.8, {
+                                force3D: true,
+                                y: pers,
+                                ease: Power0.easeNone
+                            });
                         } else {
                             let y = dsnGrid.getUndefinedVal(img.data('dsn-y'), '10%');
                             let scale = dsnGrid.getUndefinedVal(img.data('dsn-scale'), 1.1);
 
                             if (triggerHook !== 1) {
                                 img.css('top', 0);
-                                parallax = TweenMax.to(img, 2, {force3D: true, scale: scale, y: y});
+                                parallax = TweenMax.to(img, 2, {
+                                    force3D: true,
+                                    scale: scale,
+                                    y: y
+                                });
                             } else
                                 parallax = TweenMax.to(img, 1, {
                                     force3D: true,
@@ -409,10 +432,10 @@
 
 
                         var parallaxIt = new ScrollMagic.Scene({
-                            triggerElement: this,
-                            triggerHook: triggerHook,
-                            duration: duration
-                        })
+                                triggerElement: this,
+                                triggerHook: triggerHook,
+                                duration: duration
+                            })
                             .setTween(parallax)
                             .addTo(controller);
 
@@ -438,12 +461,16 @@
                     if (resp === 'tablet' && wind.width() < 992) return;
 
 
-                    let parallax = TweenMax.to(_that, 2, {y: move, autoAlpha: opacity, ease: Power0.easeNone});
+                    let parallax = TweenMax.to(_that, 2, {
+                        y: move,
+                        autoAlpha: opacity,
+                        ease: Power0.easeNone
+                    });
                     var parallaxIt = new ScrollMagic.Scene({
-                        triggerElement: this,
-                        triggerHook: triggerHook,
-                        duration: duration
-                    })
+                            triggerElement: this,
+                            triggerHook: triggerHook,
+                            duration: duration
+                        })
                         .setTween(parallax)
                         .addTo(controller);
 
@@ -480,10 +507,10 @@
                     let duration = dsnGrid.getUndefinedVal($(this).data('dsn-duration'), $(this).outerHeight() + 70);
 
                     var parallaxIt = new ScrollMagic.Scene({
-                        triggerElement: this,
-                        triggerHook: 0.05,
-                        duration: duration
-                    })
+                            triggerElement: this,
+                            triggerHook: 0.05,
+                            duration: duration
+                        })
                         .addTo(controller);
 
                     parallaxIt.on("enter", function () {
@@ -517,11 +544,11 @@
                         triggerHook = 0.8;
 
                     var parallaxIt = new ScrollMagic.Scene({
-                        triggerElement: this,
-                        reverse: false,
-                        triggerHook: triggerHook,
+                            triggerElement: this,
+                            reverse: false,
+                            triggerHook: triggerHook,
 
-                    })
+                        })
                         .setClassToggle(this, 'dsn-active')
                         .addTo(controller);
                     effectScroll.getListener(function () {
@@ -536,11 +563,15 @@
 
 
                 var parallaxIt = new ScrollMagic.Scene({
-                    triggerElement: '.header-single-post',
-                    triggerHook: 0,
-                    duration: '100%'
-                })
-                    .setTween(TweenMax.fromTo(header_project, 1, {width: '100%'}, {width: '80%'}))
+                        triggerElement: '.header-single-post',
+                        triggerHook: 0,
+                        duration: '100%'
+                    })
+                    .setTween(TweenMax.fromTo(header_project, 1, {
+                        width: '100%'
+                    }, {
+                        width: '80%'
+                    }))
                     .addTo(controller);
 
                 effectScroll.getListener(function () {
@@ -580,35 +611,37 @@
 
         return {
             isMobile: function () {
-                if (navigator.userAgent.match(/Android/i)
-                    || navigator.userAgent.match(/webOS/i)
-                    || navigator.userAgent.match(/iPhone/i)
-                    || navigator.userAgent.match(/iPad/i)
-                    || navigator.userAgent.match(/iPod/i)
-                    || navigator.userAgent.match(/BlackBerry/i)
-                    || navigator.userAgent.match(/Windows Phone/i)
-                    || navigator.userAgent.match(/Edge/i)
-                    || navigator.userAgent.match(/MSIE 10/i)
-                    || navigator.userAgent.match(/MSIE 9/i)
+                if (navigator.userAgent.match(/Android/i) ||
+                    navigator.userAgent.match(/webOS/i) ||
+                    navigator.userAgent.match(/iPhone/i) ||
+                    navigator.userAgent.match(/iPad/i) ||
+                    navigator.userAgent.match(/iPod/i) ||
+                    navigator.userAgent.match(/BlackBerry/i) ||
+                    navigator.userAgent.match(/Windows Phone/i) ||
+                    navigator.userAgent.match(/Edge/i) ||
+                    navigator.userAgent.match(/MSIE 10/i) ||
+                    navigator.userAgent.match(/MSIE 9/i)
                     // || wind.width() <= 991
-                    || false
+                    ||
+                    false
                 ) {
                     return true;
                 }
 
                 return false;
-            }, isMobiles: function () {
-                if (navigator.userAgent.match(/Android/i)
-                    || navigator.userAgent.match(/webOS/i)
-                    || navigator.userAgent.match(/iPhone/i)
-                    || navigator.userAgent.match(/iPad/i)
-                    || navigator.userAgent.match(/iPod/i)
-                    || navigator.userAgent.match(/BlackBerry/i)
-                    || navigator.userAgent.match(/Windows Phone/i)
-                    || navigator.userAgent.match(/Edge/i)
-                    || navigator.userAgent.match(/MSIE 10/i)
-                    || navigator.userAgent.match(/MSIE 9/i)
-                    || wind.width() <= 991
+            },
+            isMobiles: function () {
+                if (navigator.userAgent.match(/Android/i) ||
+                    navigator.userAgent.match(/webOS/i) ||
+                    navigator.userAgent.match(/iPhone/i) ||
+                    navigator.userAgent.match(/iPad/i) ||
+                    navigator.userAgent.match(/iPod/i) ||
+                    navigator.userAgent.match(/BlackBerry/i) ||
+                    navigator.userAgent.match(/Windows Phone/i) ||
+                    navigator.userAgent.match(/Edge/i) ||
+                    navigator.userAgent.match(/MSIE 10/i) ||
+                    navigator.userAgent.match(/MSIE 9/i) ||
+                    wind.width() <= 991
                 ) {
                     return true;
                 }
@@ -667,8 +700,8 @@
                         sc = effectScroll.getScrollbar();
 
                     TweenLite.to(sc, 1.5, {
-                        scrollTo: $('.wrapper').offset().top, ease:
-                        Expo.easeInOut,
+                        scrollTo: $('.wrapper').offset().top,
+                        ease: Expo.easeInOut,
                     });
                 });
                 if (!this.isScroller(true)) return;
@@ -951,8 +984,7 @@
         const $classes = 'dsn-show-work',
             $classes_active = 'dsn-active',
             $classes_active_enter = 'dsn-active-enter',
-            $classes_active_leve = 'dsn-active-leve'
-        ;
+            $classes_active_leve = 'dsn-active-leve';
 
         $view.on('click', function () {
             body.toggleClass($classes);
@@ -1118,7 +1150,10 @@
                 let _url = url;
                 if (_url !== undefined) {
 
-                    TweenMax.to('footer', 0.8, {autoAlpha: 0, y: -50});
+                    TweenMax.to('footer', 0.8, {
+                        autoAlpha: 0,
+                        y: -50
+                    });
                     TweenMax.staggerTo(active.find('.project-title').find('span , h5'), 0.8, {
                         autoAlpha: 0,
                         y: -50,
@@ -1342,10 +1377,16 @@
                 });
             },
             hideAnimate: function () {
-                TweenMax.set($(dataAttr.animateTextAjax), {autoAlpha: 0, y: -50});
+                TweenMax.set($(dataAttr.animateTextAjax), {
+                    autoAlpha: 0,
+                    y: -50
+                });
             },
             showAnimate: function () {
-                TweenMax.staggerTo($(dataAttr.animateTextAjax), 1, {autoAlpha: 1, y: 0}, 0.2);
+                TweenMax.staggerTo($(dataAttr.animateTextAjax), 1, {
+                    autoAlpha: 1,
+                    y: 0
+                }, 0.2);
             },
 
             loader: function (url, callback) {
@@ -1618,7 +1659,9 @@
                 open: function () {
                     // Will fire when this exact popup is opened
                     // this - is Magnific Popup object
-                    $('html').css({margin: 0})
+                    $('html').css({
+                        margin: 0
+                    })
                 },
                 close: function () {
                     // Will fire when popup is closed
@@ -1662,8 +1705,8 @@
 
             setTimeout(function () {
                 TweenLite.to(sc, 1.5, {
-                    scrollTo: $gallery.offset().top - 150, ease:
-                    Expo.easeInOut,
+                    scrollTo: $gallery.offset().top - 150,
+                    ease: Expo.easeInOut,
                 });
             }, 500)
 
@@ -1836,13 +1879,12 @@ function initMap() {
                     lng: leg
                 },
                 zoom: zoom,
-                styles: [
-                    {
+                styles: [{
                         "featureType": "all",
                         "elementType": "labels.text.fill",
                         "stylers": [{
-                            "saturation": 36
-                        },
+                                "saturation": 36
+                            },
                             {
                                 "color": "#000000"
                             },
@@ -1855,8 +1897,8 @@ function initMap() {
                         "featureType": "all",
                         "elementType": "labels.text.stroke",
                         "stylers": [{
-                            "visibility": "on"
-                        },
+                                "visibility": "on"
+                            },
                             {
                                 "color": "#000000"
                             },
@@ -1876,8 +1918,8 @@ function initMap() {
                         "featureType": "administrative",
                         "elementType": "geometry.fill",
                         "stylers": [{
-                            "color": "#000000"
-                        },
+                                "color": "#000000"
+                            },
                             {
                                 "lightness": 20
                             }
@@ -1887,8 +1929,8 @@ function initMap() {
                         "featureType": "administrative",
                         "elementType": "geometry.stroke",
                         "stylers": [{
-                            "color": "#000000"
-                        },
+                                "color": "#000000"
+                            },
                             {
                                 "lightness": 17
                             },
@@ -1901,8 +1943,8 @@ function initMap() {
                         "featureType": "landscape",
                         "elementType": "geometry",
                         "stylers": [{
-                            "color": "#000000"
-                        },
+                                "color": "#000000"
+                            },
                             {
                                 "lightness": 20
                             }
@@ -1912,8 +1954,8 @@ function initMap() {
                         "featureType": "poi",
                         "elementType": "geometry",
                         "stylers": [{
-                            "color": "#000000"
-                        },
+                                "color": "#000000"
+                            },
                             {
                                 "lightness": 21
                             }
@@ -1923,8 +1965,8 @@ function initMap() {
                         "featureType": "road.highway",
                         "elementType": "geometry.fill",
                         "stylers": [{
-                            "color": "#000000"
-                        },
+                                "color": "#000000"
+                            },
                             {
                                 "lightness": 17
                             }
@@ -1934,8 +1976,8 @@ function initMap() {
                         "featureType": "road.highway",
                         "elementType": "geometry.stroke",
                         "stylers": [{
-                            "color": "#000000"
-                        },
+                                "color": "#000000"
+                            },
                             {
                                 "lightness": 29
                             },
@@ -1948,8 +1990,8 @@ function initMap() {
                         "featureType": "road.arterial",
                         "elementType": "geometry",
                         "stylers": [{
-                            "color": "#000000"
-                        },
+                                "color": "#000000"
+                            },
                             {
                                 "lightness": 18
                             }
@@ -1959,8 +2001,8 @@ function initMap() {
                         "featureType": "road.local",
                         "elementType": "geometry",
                         "stylers": [{
-                            "color": "#000000"
-                        },
+                                "color": "#000000"
+                            },
                             {
                                 "lightness": 16
                             }
@@ -1970,8 +2012,8 @@ function initMap() {
                         "featureType": "transit",
                         "elementType": "geometry",
                         "stylers": [{
-                            "color": "#000000"
-                        },
+                                "color": "#000000"
+                            },
                             {
                                 "lightness": 19
                             }
@@ -1981,8 +2023,8 @@ function initMap() {
                         "featureType": "water",
                         "elementType": "geometry",
                         "stylers": [{
-                            "color": "#000000"
-                        },
+                                "color": "#000000"
+                            },
                             {
                                 "lightness": 17
                             }
@@ -2014,5 +2056,13 @@ function initMap() {
 
 }
 
-
-
+// Video-Gallery
+$(document).ready(function () {
+    $('.video-gallery').magnificPopup({
+        delegate: 'a',
+        type: 'iframe',
+        gallery: {
+            enabled: true
+        }
+    });
+});
